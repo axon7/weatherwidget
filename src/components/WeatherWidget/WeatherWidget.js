@@ -106,6 +106,7 @@ class WeatherWidget extends Component {
                   color='white'
                   icon={data.currently.icon.replace(/-/g, "_").toUpperCase()}
                   autoplay={true}
+                  style={{ maxWidth: "400px" }}
                 />
               </>
             )}
