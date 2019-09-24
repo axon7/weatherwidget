@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import Skycons from "react-skycons";
+
 const StyledButton = styled.button`
   background-color: #4caf50; /* Green */
   border: none;
@@ -110,6 +112,11 @@ class WeatherWidget extends Component {
               <>
                 <h1>{data.currently.apparentTemperature.toFixed(1)}&deg;C </h1>
                 <p>{data.currently.summary}</p>
+                <Skycons
+                  color='white'
+                  icon={data.currently.icon.replace(/-/g, "_").toUpperCase()}
+                  autoplay={true}
+                />
               </>
             )}
           </WeatherInfo>
