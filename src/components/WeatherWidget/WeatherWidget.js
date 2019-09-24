@@ -14,9 +14,9 @@ const StyledButton = styled.button`
   margin-right: 10px;
 `;
 const StyledContainer = styled.div`
-  width: 80%;
+  width: 50%;
   margin: 0 auto;
-  background-color: lightgrey;
+  background-color: lightblue;
   border-radius: 20px;
   padding: 20px;
   display: flex;
