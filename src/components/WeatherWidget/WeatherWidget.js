@@ -2,19 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Skycons from "react-skycons";
 
-const StyledButton = styled.button`
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  cursor: pointer;
-  width: 50px;
-  height: 30px;
-  margin-right: 10px;
-`;
 const StyledContainer = styled.div`
   width: 50%;
   margin: 0 auto;
@@ -29,6 +16,12 @@ const StyledContainer = styled.div`
 
 const StyledSelect = styled.select`
   height: 30px;
+  border: none;
+  background-color: lightseagreen;
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  outline: none;
 `;
 
 const WeatherInfo = styled.div`
@@ -74,13 +67,11 @@ class WeatherWidget extends Component {
   }
 
   handleChange(event) {
-    this.setState({ coord: event.target.value });
-    console.log(this.state);
-  }
+    this.setState({ coord: event.target.value }, () => {
+      this.getWeather(this.state.coord);
+    });
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.getWeather(this.state.coord);
+    console.log(this.state);
   }
 
   render() {
@@ -91,7 +82,7 @@ class WeatherWidget extends Component {
     } else {
       return (
         <StyledContainer>
-          <form onSubmit={e => this.handleSubmit(e)}>
+          <form>
             <label>
               <StyledSelect
                 value={this.state.coords}
@@ -103,11 +94,10 @@ class WeatherWidget extends Component {
                 <option value='51.1,17.03333'>Wroclaw</option>
               </StyledSelect>
             </label>
-            <StyledButton type='submit'>Go!</StyledButton>
           </form>
           <WeatherInfo>
             {!this.state.data ? (
-              <h1>Select the city</h1>
+              <h1>Loading...</h1>
             ) : (
               <>
                 <h1>{data.currently.apparentTemperature.toFixed(1)}&deg;C </h1>
