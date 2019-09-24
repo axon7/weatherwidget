@@ -4,6 +4,8 @@
 
 ### Live Demo
 
+[Weather-Widget on Heroku](https://weather-widget-task.herokuapp.com/)
+
 ### Used:
 
 - [x] React
